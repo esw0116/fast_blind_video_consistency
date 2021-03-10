@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.init as init
 
-from ConvLSTM import ConvLSTM
+from .ConvLSTM import ConvLSTM
 
 class TransformNet(nn.Module):
 

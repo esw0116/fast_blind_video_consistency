@@ -15,3 +15,14 @@ data
 data/*
 pretrained_models
 pretrained_models/*
+
+__pycache__
+
+dataset
+evaluation
+optical_flow
+saved_imgs
+
+networks/**/build
+networks/**/*.egg-info
+networks/**/dist

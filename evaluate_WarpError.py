@@ -60,7 +60,6 @@ if __name__ == "__main__":
     err_all = np.zeros(len(video_list))
 
     for v in range(len(video_list)):
-
         video = video_list[v]
 
         frame_dir = os.path.join(opts.data_dir, opts.phase, opts.method, opts.task, opts.dataset, video)
@@ -71,8 +70,6 @@ if __name__ == "__main__":
 
         err = 0
         for t in range(1, len(frame_list)):
-            
-            
             ### load input images
             filename = os.path.join(frame_dir, "%05d.jpg" %(t - 1)) 
             img1 = utils.read_img(filename)

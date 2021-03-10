@@ -232,7 +232,7 @@ def read_img(filename, grayscale=0):
 
 def save_img(img, filename):
 
-    print("Save %s" %filename)
+    # print("Save %s" %filename)
 
     if img.ndim == 3:
         img = img[:, :, ::-1] ### RGB to BGR

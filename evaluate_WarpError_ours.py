@@ -25,7 +25,7 @@ if __name__ == "__main__":
     parser.add_argument('-model',           type=str,     default="FlowNet2",   help='Flow model name')
     parser.add_argument('-test_dir',        type=str,     required=True,            help='test model name')
     parser.add_argument('-dataset',         type=str,     required=True,            help='test datasets')
-    parser.add_argument('-phase',           type=str,     default="test",           choices=["train", "test"])
+    parser.add_argument('-phase',           type=str,     default="test",           choices=["train", "val", "test"])
     parser.add_argument('-data_dir',        type=str,     default='optical_flow',   help='path to data folder')
     parser.add_argument('-save_dir',        type=str,     default='saved_imgs',     help='path to save folder')
     parser.add_argument('-seq_len',         type=int,     help='sequence length')

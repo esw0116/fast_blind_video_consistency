@@ -25,7 +25,7 @@ if __name__ == "__main__":
     ### testing options
     parser.add_argument('-model',           type=str,     default="FlowNet2",   help='Flow model name')
     parser.add_argument('-dataset',         type=str,     required=True,        help='testing datasets')
-    parser.add_argument('-phase',           type=str,     default="test",       choices=["train", "test"])
+    parser.add_argument('-phase',           type=str,     default="test",       choices=["train", "val", "test"])
     parser.add_argument('-data_dir',        type=str,     default='dataset',       help='path to data folder')
     parser.add_argument('-save_dir',        type=str,     default='optical_flow',       help='path to save folder')
     parser.add_argument('-cpu',             action='store_true',                help='use cpu?')
@@ -68,15 +68,15 @@ if __name__ == "__main__":
    
     for video_dir in video_list:
         video = os.path.basename(video_dir)
-        fw_flow_dir = os.path.join(opts.save_dir, opts.dataset, opts.phase, "fw_flow", video)
+        fw_flow_dir = os.path.join(opts.save_dir, opts.model, opts.dataset, opts.phase, "fw_flow", video)
         if not os.path.isdir(fw_flow_dir):
             os.makedirs(fw_flow_dir)
 
-        fw_occ_dir = os.path.join(opts.save_dir, opts.dataset, opts.phase, "fw_occlusion", video)
+        fw_occ_dir = os.path.join(opts.save_dir, opts.model, opts.dataset, opts.phase, "fw_occlusion", video)
         if not os.path.isdir(fw_occ_dir):
             os.makedirs(fw_occ_dir)
 
-        fw_rgb_dir = os.path.join(opts.save_dir, opts.dataset, opts.phase, "fw_flow_rgb", video)
+        fw_rgb_dir = os.path.join(opts.save_dir, opts.model, opts.dataset, opts.phase, "fw_flow_rgb", video)
         if not os.path.isdir(fw_rgb_dir):
             os.makedirs(fw_rgb_dir)
         
@@ -87,7 +87,7 @@ if __name__ == "__main__":
         frame_list = sorted(glob.glob(os.path.join(video_dir, "*.png")))
 
         for t in range(len(frame_list) - 1):
-            print("Compute flow on %s-%s frame %d" %(opts.dataset, opts.phase, t))
+            print("Compute flow on %s-%s frame %d" %(opts.dataset, opts.phase, t), end='\r')
 
             ### load input images 
             img1 = utils.read_img(frame_list[t])
